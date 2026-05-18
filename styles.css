@@ -1,0 +1,1469 @@
+/* ===========================================
+   GANAVENT - HOJA DE ESTILOS CSS PRINCIPAL
+   ===========================================
+   Descripción: Estilos profesionales para landing page
+   Autor: GANAVENT Team
+   Versión: 3.0 - Temática Ganadera (Verde)
+   Metodología: Mobile-first, BEM naming convention
+   Paleta: Tonos de verde (naturaleza, ganadería)
+   =========================================== */
+
+/* ===========================================
+   RESET Y CONFIGURACIÓN BASE
+   ===========================================
+   Función: Eliminar estilos predeterminados del navegador
+   Propósito: Consistencia entre diferentes navegadores
+   =========================================== */
+* {
+    margin: 0; /* Elimina márgenes predeterminados */
+    padding: 0; /* Elimina padding predeterminado */
+    box-sizing: border-box; /* Incluye padding/border en el ancho total */
+}
+
+/* ===========================================
+   ESTILOS DEL BODY (CUERPO PRINCIPAL)
+   ===========================================
+   Función: Configuración global de tipografía y colores
+   Propósito: Base visual para toda la página
+   Temática: Verde claro (pasto, naturaleza)
+   =========================================== */
+body {
+    font-family: 'Montserrat', sans-serif; /* Fuente principal - Google Fonts */
+    line-height: 1.6; /* Espaciado entre líneas para legibilidad */
+    color: #1B5E20; /* Color de texto principal - verde oscuro */
+    overflow-x: hidden; /* Evita scroll horizontal no deseado */
+    background-color: #E8F5E9; /* Fondo verde claro (pasto) */
+}
+
+/* ===========================================
+   NAVEGACIÓN PRINCIPAL
+   ===========================================
+   Función: Barra de navegación fija con efecto blur
+   Características: Sticky, responsive, accesible
+   Efecto: Glassmorphism con backdrop-filter
+   Temática: Verde oscuro (bosque, naturaleza)
+   =========================================== */
+.navbar {
+    position: fixed; /* Fija la navbar en la parte superior */
+    top: 0; /* Posición en el borde superior */
+    width: 100%; /* Ancho completo de la pantalla */
+    background: rgba(13, 59, 13, 0.95); /* Fondo verde muy oscuro semitransparente */
+    backdrop-filter: blur(8px); /* Efecto blur de fondo (glassmorphism) */
+    z-index: 1000; /* Capa superior - siempre visible */
+    padding: 0.8rem 0; /* Espaciado vertical interno */
+    box-shadow: 0 2px 10px rgba(13, 59, 13, 0.3); /* Sombra verde */
+}
+
+/* ===========================================
+   CONTENEDOR DE NAVEGACIÓN
+   ===========================================
+   Función: Centra y limita el ancho del contenido
+   Propósito: Mantener consistencia en pantallas grandes
+   =========================================== */
+.nav-container {
+    max-width: 1200px; /* Ancho máximo para pantallas grandes */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 0 2rem; /* Espaciado lateral */
+    display: flex; /* Layout flexbox */
+    justify-content: space-between; /* Logo a izquierda, menú a derecha */
+    align-items: center; /* Alineación vertical centrada */
+}
+
+/* ===========================================
+   LOGO DE LA MARCA
+   ===========================================
+   Función: Identidad visual en la navegación
+   Propósito: Reconocimiento de marca constante
+   Presentación: Efectos visuales profesionales
+   =========================================== */
+.logo {
+    display: flex; /* Layout flexbox */
+    align-items: center; /* Alineación vertical centrada */
+    padding: 0.5rem 1rem; /* Espaciado interno */
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    border-radius: 12px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave */
+    border: 2px solid rgba(129, 199, 132, 0.3); /* Borde verde sutil */
+}
+
+/* Efecto hover en logo */
+.logo:hover {
+    background: rgba(255, 255, 255, 0.2); /* Fondo más opaco */
+    border-color: #81C784; /* Borde verde más visible */
+    transform: scale(1.05); /* Escala sutil */
+    box-shadow: 0 4px 15px rgba(129, 199, 132, 0.3); /* Sombra verde */
+}
+
+.logo-img {
+    height: 45px; /* Altura del logo aumentada */
+    width: auto; /* Ancho automático proporcional */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); /* Sombra sutil */
+    transition: filter 0.3s ease; /* Transición suave */
+}
+
+.logo:hover .logo-img {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)); /* Sombra más intensa al hover */
+}
+
+/* ===========================================
+   MENÚ DE NAVEGACIÓN
+   ===========================================
+   Función: Lista de enlaces a secciones principales
+   Propósito: Navegación principal del sitio
+   =========================================== */
+.nav-menu {
+    display: flex; /* Layout horizontal */
+    list-style: none; /* Sin viñetas */
+    gap: 2.5rem; /* Espaciado entre elementos */
+}
+
+/* ===========================================
+   ENLACES DE NAVEGACIÓN
+   ===========================================
+   Función: Links individuales del menú
+   Interacción: Hover con línea animada
+   Accesibilidad: Focus visible
+   Temática: Blanco con acento verde claro
+   =========================================== */
+.nav-link {
+    text-decoration: none; /* Sin subrayado */
+    color: #ffffff; /* Texto blanco */
+    font-weight: 500; /* Peso medio */
+    font-size: 0.9rem; /* Tamaño legible */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+    transition: color 0.3s ease; /* Transición suave de color */
+    position: relative; /* Para pseudo-elementos */
+}
+
+.nav-link:hover {
+    color: #81C784; /* Verde claro al hover */
+}
+
+/* ===========================================
+   LÍNEA DECORATIVA ANIMADA (UNDERLINE)
+   ===========================================
+   Función: Indicador visual de hover
+   Efecto: Línea que se expande de izquierda a derecha
+   Temática: Verde brillante
+   =========================================== */
+.nav-link::after {
+    content: ''; /* Contenido vacío para pseudo-elemento */
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: -5px; /* Debajo del texto */
+    left: 0; /* Comienza desde la izquierda */
+    width: 0; /* Ancho inicial cero */
+    height: 2px; /* Grosor de la línea */
+    background: #4CAF50; /* Verde brillante */
+    transition: width 0.3s ease; /* Animación de expansión */
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Se expande al 100% al hover */
+}
+
+/* ===========================================
+   SECCIÓN HERO (PORTADA PRINCIPAL)
+   ===========================================
+   Función: Primera impresión del usuario
+   Características: Pantalla completa, fondo visual
+   Altura: 100vh (viewport height)
+   Temática: Degradado verde (pradera, naturaleza)
+   =========================================== */
+.hero {
+    height: 100vh; /* Altura completa de la ventana */
+    background: linear-gradient(rgba(13, 59, 13, 0.6), rgba(27, 94, 32, 0.7)), /* Overlay verde oscuro */
+                linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%), /* Degradado verde */
+                url('img/hero-bg.jpg') center/cover no-repeat; /* Imagen de fondo */
+    background-color: #1B5E20; /* Color de respaldo verde oscuro */
+    display: flex; /* Layout flexbox */
+    flex-direction: column; /* Dirección vertical */
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+    text-align: center; /* Texto centrado */
+    color: white; /* Color de texto */
+    position: relative; /* Para elementos posicionados */
+    overflow: hidden; /* Evita desbordamiento */
+}
+
+/* ===========================================
+   ELEMENTO DECORATIVO: LOGO CIRCULAR
+   ===========================================
+   Función: Elemento decorativo con texto de marca
+   Posición: Esquina superior derecha
+   Efecto: Círculo semitransparente con borde
+   Temática: Verde (hojas, naturaleza)
+   =========================================== */
+.hero::before {
+    content: 'GANAVENT\nCALIDAD\nTRADICIÓN'; /* Texto del logo */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 2rem; /* Distancia desde arriba */
+    right: 2rem; /* Distancia desde la derecha */
+    width: 120px; /* Ancho del círculo */
+    height: 120px; /* Altura del círculo */
+    background: rgba(76, 175, 80, 0.9); /* Verde semitransparente */
+    border-radius: 50%; /* Forma circular */
+    display: flex; /* Layout flexbox */
+    flex-direction: column; /* Texto en columnas */
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+    font-size: 0.7rem; /* Tamaño de fuente pequeño */
+    font-weight: 700; /* Peso bold */
+    line-height: 1.2; /* Espaciado entre líneas */
+    text-align: center; /* Texto centrado */
+    z-index: 3; /* Capa superior */
+    color: white; /* Texto blanco */
+    border: 3px solid #81C784; /* Borde verde claro */
+}
+
+/* ===========================================
+   CONTENIDO PRINCIPAL DEL HERO
+   ===========================================
+   Función: Contenedor del texto y CTA
+   Propósito: Organizar elementos del hero
+   =========================================== */
+.hero-content {
+    position: relative; /* Posicionamiento relativo */
+    z-index: 2; /* Encima del overlay */
+    max-width: 800px; /* Ancho máximo para legibilidad */
+    padding: 0 2rem; /* Espaciado lateral */
+}
+
+/* ===========================================
+   TÍTULO PRINCIPAL DEL HERO (H1)
+   ===========================================
+   Función: Título más importante de la página
+   Características: Grande, bold, animación
+   SEO: Solo un H1 por página
+   Presentación: Colores diferenciados por líneas
+   =========================================== */
+.hero-title {
+    font-size: 4rem; /* Tamaño grande para impacto */
+    font-weight: 800; /* Peso extra bold */
+    margin-bottom: 1rem; /* Espaciado inferior */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 3px; /* Espaciado entre letras */
+    animation: fadeInUp 1s ease; /* Animación de entrada */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para legibilidad */
+    line-height: 1.2; /* Espaciado entre líneas */
+}
+
+/* ===========================================
+   PRIMERA LÍNEA DEL TÍTULO: "BIENVENIDO A"
+   ===========================================
+   Función: Parte introductoria del título
+   Color: Blanco puro para elegancia
+   Tamaño: Ligeramente más pequeño que la marca
+   Temática: Limpio y natural
+   =========================================== */
+.title-welcome {
+    color: #ffffff; /* Blanco puro */
+    font-size: 0.7em; /* 70% del tamaño base */
+    font-weight: 700; /* Bold */
+    letter-spacing: 4px; /* Espaciado amplio */
+    display: inline-block; /* Para efectos */
+    text-shadow: 2px 2px 8px rgba(13, 59, 13, 0.9); /* Sombra verde oscura */
+}
+
+/* ===========================================
+   SEGUNDA LÍNEA DEL TÍTULO: "GANAVENT"
+   ===========================================
+   Función: Nombre de la marca destacado
+   Color: Degradado verde para impacto
+   Efecto: Degradado lineal con sombra intensa
+   Presentación: Más grande y llamativo
+   Temática: Verde vibrante (naturaleza, vida)
+   =========================================== */
+.title-brand {
+    color: #4CAF50; /* Verde base */
+    font-size: 1.3em; /* 130% del tamaño base */
+    font-weight: 900; /* Extra extra bold */
+    letter-spacing: 8px; /* Espaciado muy amplio */
+    display: inline-block; /* Para efectos */
+    background: linear-gradient(135deg, #66BB6A 0%, #81C784 50%, #66BB6A 100%); /* Degradado verde claro */
+    -webkit-background-clip: text; /* Clip para texto */
+    -webkit-text-fill-color: transparent; /* Texto transparente para mostrar degradado */
+    background-clip: text; /* Clip estándar */
+    text-shadow: none; /* Sin sombra para degradado */
+    filter: drop-shadow(3px 3px 6px rgba(13, 59, 13, 0.8)); /* Sombra verde oscura */
+    animation: pulse 2s ease-in-out infinite; /* Animación de pulso */
+}
+
+/* ===========================================
+   ANIMACIÓN: PULSE (Pulso para marca)
+   ===========================================
+   Función: Efecto de pulso sutil en la marca
+   Uso: Nombre "GANAVENT" para llamar atención
+   Duración: 2s (infinito)
+   Temática: Respiración natural
+   =========================================== */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1); /* Tamaño original */
+        filter: drop-shadow(3px 3px 6px rgba(13, 59, 13, 0.8)); /* Sombra verde normal */
+    }
+    50% {
+        transform: scale(1.05); /* Escala del 105% */
+        filter: drop-shadow(4px 4px 12px rgba(76, 175, 80, 0.6)); /* Sombra verde brillante */
+    }
+}
+
+/* ===========================================
+   NOMBRE DE MARCA (SPAN)
+   ===========================================
+   Función: Resaltar el nombre de la marca
+   Propósito: Identidad visual destacada
+   =========================================== */
+.brand-name {
+    color: #8bc34a; /* Verde marca */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para contraste */
+}
+
+/* ===========================================
+   SUBTÍTULO DEL HERO (H2)
+   ===========================================
+   Función: Complemento del título principal
+   Características: Animación con retraso
+   Propósito: Propuesta de valor
+   Presentación: Color verde claro con efecto brillante
+   Temática: Frescura, naturaleza
+   =========================================== */
+.hero-subtitle {
+    font-size: 1.8rem; /* Tamaño mediano-grande */
+    font-weight: 700; /* Peso bold aumentado */
+    margin-bottom: 2rem; /* Espaciado inferior */
+    color: #A5D6A7; /* Verde claro pastel */
+    animation: fadeInUp 1s ease 0.2s both; /* Animación con retraso de 0.2s */
+    text-shadow: 2px 2px 4px rgba(13, 59, 13, 0.9), 0 0 20px rgba(129, 199, 132, 0.3); /* Sombra + brillo verde */
+    letter-spacing: 2px; /* Espaciado aumentado */
+    text-transform: uppercase; /* Mayúsculas para consistencia */
+    position: relative; /* Para pseudo-elementos */
+}
+
+/* ===========================================
+   LÍNEA DECORATIVA BAJO SUBTÍTULO
+   ===========================================
+   Función: Separador visual elegante
+   Efecto: Línea verde animada
+   Temática: Verde vibrante
+   =========================================== */
+.hero-subtitle::after {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: -10px; /* Debajo del subtítulo */
+    left: 50%; /* Centrado horizontal */
+    transform: translateX(-50%); /* Ajuste de centrado */
+    width: 100px; /* Ancho de la línea */
+    height: 3px; /* Grosor */
+    background: linear-gradient(90deg, transparent, #4CAF50, transparent); /* Degradado verde */
+    animation: expandLine 1s ease 0.5s both; /* Animación de expansión */
+}
+
+/* ===========================================
+   ANIMACIÓN: EXPAND LINE (Expansión de línea)
+   ===========================================
+   Función: Línea se expande desde el centro
+   Uso: Separador decorativo bajo subtítulo
+   Duración: 1s
+   =========================================== */
+@keyframes expandLine {
+    from {
+        width: 0; /* Comienza con ancho cero */
+    }
+    to {
+        width: 100px; /* Termina con ancho completo */
+    }
+}
+
+/* ===========================================
+   DESCRIPCIÓN DEL HERO (PÁRRAFO)
+   ===========================================
+   Función: Detalles adicionales del mensaje
+   Características: Animación con mayor retraso
+   Propósito: Contexto y explicación
+   =========================================== */
+.hero-description {
+    font-size: 1.2rem; /* Tamaño legible */
+    margin-bottom: 2.5rem; /* Espaciado inferior */
+    line-height: 1.8; /* Espaciado entre líneas */
+    animation: fadeInUp 1s ease 0.4s both; /* Animación con retraso de 0.4s */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra suave */
+}
+
+/* ===========================================
+   BOTÓN DE LLAMADA A LA ACCIÓN (CTA)
+   ===========================================
+   Función: Convertir visitantes en clientes
+   Características: Verde, redondeado, con flecha
+   Interacción: Hover con elevación y animación
+   Accesibilidad: Focus visible
+   Temática: Verde vibrante (crecimiento, acción)
+   =========================================== */
+.cta-button {
+    background: #4CAF50; /* Verde vibrante */
+    color: #ffffff; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 1rem 3rem; /* Espaciado generoso */
+    font-size: 1.1rem; /* Tamaño legible */
+    font-weight: 600; /* Peso semibold */
+    border-radius: 50px; /* Forma de píldora */
+    cursor: pointer; /* Cursor de mano */
+    transition: all 0.3s ease; /* Transición suave */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    animation: fadeInUp 1s ease 0.6s both; /* Animación con retraso de 0.6s */
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4); /* Sombra verde */
+    position: relative; /* Para pseudo-elementos */
+    padding-right: 4rem; /* Espacio extra para la flecha */
+}
+
+/* ===========================================
+   FLECHA DECORATIVA DEL BOTÓN
+   ===========================================
+   Función: Indicador visual de acción
+   Efecto: Se mueve al hover
+   =========================================== */
+.cta-button::after {
+    content: '→'; /* Carácter de flecha */
+    position: absolute; /* Posicionamiento absoluto */
+    right: 1.5rem; /* Distancia desde la derecha */
+    top: 50%; /* Centrado vertical */
+    transform: translateY(-50%); /* Ajuste de posición */
+    font-size: 1.3rem; /* Tamaño de la flecha */
+    transition: transform 0.3s ease; /* Animación suave */
+}
+
+/* ===========================================
+   ESTADO HOVER DEL BOTÓN CTA
+   ===========================================
+   Función: Feedback visual al interactuar
+   Efectos: Elevación, sombra aumentada, flecha animada
+   Temática: Verde más intenso
+   =========================================== */
+.cta-button:hover {
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6); /* Sombra más intensa */
+    background: #43A047; /* Verde más oscuro */
+}
+
+.cta-button:hover::after {
+    transform: translateY(-50%) translateX(5px); /* Mover flecha a la derecha */
+}
+
+/* ===========================================
+   TEXTO ADICIONAL DE CTA (INFERIOR)
+   ===========================================
+   Función: Reforzar el mensaje principal
+   Características: Animación de rebote constante
+   Posición: Inferior centrada
+   =========================================== */
+.hero-cta {
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 3rem; /* Distancia desde abajo */
+    left: 50%; /* Centrado horizontal */
+    transform: translateX(-50%); /* Ajuste de centrado */
+    z-index: 2; /* Capa superior */
+    animation: bounce 2s infinite; /* Animación de rebote infinita */
+}
+
+.cta-text {
+    font-size: 1.3rem; /* Tamaño mediano */
+    font-weight: 600; /* Peso semibold */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 2px; /* Espaciado amplio */
+    color: #ffffff; /* Texto blanco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para legibilidad */
+}
+
+/* ===========================================
+   SECCIÓN DE CARACTERÍSTICAS
+   ===========================================
+   Función: Destacar beneficios y diferenciadores
+   Estructura: Grid de 3 tarjetas con iconos
+   Fondo: Degradado verde medio
+   Temática: Bosque, naturaleza
+   =========================================== */
+.features {
+    padding: 6rem 0; /* Espaciado vertical generoso */
+    background: linear-gradient(135deg, #1B5E20, #2E7D32); /* Degradado verde oscuro a medio */
+}
+
+/* ===========================================
+   CONTENEDOR DE CARACTERÍSTICAS
+   ===========================================
+   Función: Grid responsive para tarjetas
+   Propósito: Organizar las 3 tarjetas
+   Responsividad: Auto-fit para adaptación
+   =========================================== */
+.features-container {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 0 2rem; /* Espaciado lateral */
+    display: grid; /* Layout grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsive */
+    gap: 3rem; /* Espaciado entre tarjetas */
+}
+
+/* ===========================================
+   TARJETAS DE CARACTERÍSTICAS
+   ===========================================
+   Función: Contenedor individual de cada característica
+   Interacción: Hover con elevación
+   Presentación: Fondo elegante con efectos visuales
+   =========================================== */
+.feature-card {
+    background: rgba(255, 255, 255, 0.08); /* Fondo blanco semitransparente */
+    padding: 3rem 2.5rem; /* Espaciado interno generoso */
+    border-radius: 20px; /* Bordes muy redondeados */
+    text-align: center; /* Texto centrado */
+    transition: all 0.4s ease; /* Transición suave */
+    position: relative; /* Para pseudo-elementos */
+    overflow: hidden; /* Evita desbordamiento */
+    border: 2px solid rgba(129, 199, 132, 0.2); /* Borde verde sutil */
+    backdrop-filter: blur(10px); /* Efecto blur de fondo */
+}
+
+/* Efecto hover en tarjetas */
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.15); /* Fondo más opaco */
+    border-color: rgba(129, 199, 132, 0.5); /* Borde más visible */
+    transform: translateY(-12px); /* Elevación aumentada */
+    box-shadow: 0 20px 50px rgba(27, 94, 32, 0.3); /* Sombra verde intensa */
+}
+
+/* ===========================================
+   LÍNEA DECORATIVA SUPERIOR
+   ===========================================
+   Función: Elemento visual decorativo
+   Efecto: Línea verde claro en la parte superior
+   Temática: Brote, crecimiento
+   =========================================== */
+.feature-card::before {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Borde superior */
+    left: 50%; /* Centrado horizontal */
+    transform: translateX(-50%); /* Ajuste de centrado */
+    width: 60px; /* Ancho de la línea */
+    height: 4px; /* Grosor */
+    background: #81C784; /* Verde claro */
+    border-radius: 2px; /* Bordes redondeados */
+}
+
+/* ===========================================
+   ESTADO HOVER DE TARJETAS
+   ===========================================
+   Función: Feedback visual al interactuar
+   Efecto: Elevación de 10px
+   =========================================== */
+.feature-card:hover {
+    transform: translateY(-10px); /* Elevación al hover */
+}
+
+/* ===========================================
+   CONTENEDOR DE ICONOS DE CARACTERÍSTICAS
+   ===========================================
+   Función: Círculo decorativo para iconos SVG
+   Efecto: Fondo semitransparente con borde
+   Interacción: Escala y cambio de color al hover
+   Presentación: Efectos visuales profesionales
+   =========================================== */
+.feature-icon {
+    margin-bottom: 2rem; /* Espaciado inferior */
+    display: flex; /* Layout flexbox */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    width: 110px; /* Ancho del círculo aumentado */
+    height: 110px; /* Altura del círculo aumentado */
+    margin: 0 auto 2rem; /* Centrado horizontal con espaciado */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)); /* Degradado sutil */
+    border: 3px solid rgba(129, 199, 132, 0.4); /* Borde verde más visible */
+    border-radius: 50%; /* Forma circular */
+    transition: all 0.4s ease; /* Transición suave */
+    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.2); /* Sombra verde */
+}
+
+/* ===========================================
+   ESTADO HOVER DE ICONOS
+   ===========================================
+   Función: Feedback visual al interactuar
+   Efectos: Fondo más opaco, borde verde claro, escala
+   Temática: Verde vibrante al hover
+   =========================================== */
+.feature-card:hover .feature-icon {
+    background: linear-gradient(135deg, rgba(129, 199, 132, 0.3), rgba(76, 175, 80, 0.15)); /* Degradado verde */
+    border-color: #66BB6A; /* Borde verde medio */
+    transform: scale(1.15) rotate(5deg); /* Escala y rotación sutil */
+    box-shadow: 0 12px 35px rgba(27, 94, 32, 0.3); /* Sombra más intensa */
+}
+
+/* ===========================================
+   ICONOS SVG
+   ===========================================
+   Función: Estilizar los iconos dentro de los círculos
+   Color: Verde claro para contraste con fondo verde oscuro
+   Temática: Naturaleza, frescura
+   =========================================== */
+.feature-icon svg {
+    stroke: #81C784; /* Verde claro */
+    stroke-width: 2; /* Grosor del trazo */
+}
+
+/* ===========================================
+   TÍTULOS DE TARJETAS (H3)
+   ===========================================
+   Función: Títulos de cada característica
+   Estilo: Mayúsculas, bold, espaciado
+   =========================================== */
+.feature-card h3 {
+    font-size: 1.5rem; /* Tamaño mediano */
+    font-weight: 700; /* Peso bold */
+    color: #ffffff; /* Texto blanco */
+    margin-bottom: 1rem; /* Espaciado inferior */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* ===========================================
+   PÁRRAFOS DE TARJETAS
+   ===========================================
+   Función: Descripción de cada característica
+   Color: Blanco semitransparente para jerarquía
+   =========================================== */
+.feature-card p {
+    color: rgba(255, 255, 255, 0.8); /* Blanco semitransparente */
+    line-height: 1.6; /* Espaciado entre líneas */
+    font-size: 1rem; /* Tamaño base */
+}
+
+/* ===========================================
+   SECCIÓN DE SHOWCASE DE PRODUCTOS
+   ===========================================
+   Función: Presentación visual del servicio principal
+   Estructura: Layout de 2 columnas (imagen + información)
+   Fondo: Verde muy claro (pasto fresco)
+   Temática: Naturaleza, frescura
+   =========================================== */
+.product-showcase {
+    padding: 6rem 0; /* Espaciado vertical generoso */
+    background: #C8E6C9; /* Verde muy claro */
+    position: relative; /* Para elementos posicionados */
+}
+
+/* ===========================================
+   CONTENEDOR DEL SHOWCASE
+   ===========================================
+   Función: Organizar imagen e información
+   Layout: Grid de 2 columnas
+   Responsividad: Se adapta a una columna en móvil
+   =========================================== */
+.showcase-container {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 0 2rem; /* Espaciado lateral */
+    display: grid; /* Layout grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 4rem; /* Espaciado entre columnas */
+    align-items: center; /* Alineación vertical centrada */
+}
+
+/* ===========================================
+   CONTENEDOR DE IMAGEN DE PRODUCTO
+   ===========================================
+   Función: Contenedor de la imagen del servicio
+   Posición: Relativa para elementos decorativos
+   Presentación: Marco elegante con efectos visuales
+   =========================================== */
+.product-image {
+    position: relative; /* Para pseudo-elementos */
+    padding: 1.5rem; /* Espaciado interno para marco */
+    background: linear-gradient(135deg, #ffffff 0%, #E8F5E9 100%); /* Degradado sutil */
+    border-radius: 20px; /* Bordes muy redondeados */
+    box-shadow: 0 20px 60px rgba(27, 94, 32, 0.15); /* Sombra verde suave */
+    transition: all 0.4s ease; /* Transición suave */
+}
+
+/* Efecto hover en contenedor de imagen */
+.product-image:hover {
+    transform: translateY(-8px); /* Elevación al hover */
+    box-shadow: 0 30px 80px rgba(27, 94, 32, 0.25); /* Sombra más intensa */
+}
+
+/* ===========================================
+   IMAGEN DEL PRODUCTO
+   ===========================================
+   Función: Representación visual del servicio
+   Efecto: Zoom suave al hover
+   Presentación: Marco interior elegante
+   =========================================== */
+.product-img {
+    width: 100%; /* Ancho completo */
+    height: auto; /* Altura automática proporcional */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(27, 94, 32, 0.2); /* Sombra verde */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transición suave */
+    border: 3px solid rgba(129, 199, 132, 0.2); /* Borde verde sutil */
+}
+
+/* ===========================================
+   ESTADO HOVER DE IMAGEN
+   ===========================================
+   Función: Feedback visual al interactuar
+   Efecto: Zoom del 105% y sombra aumentada
+   =========================================== */
+.product-img:hover {
+    transform: scale(1.05); /* Zoom suave */
+    box-shadow: 0 15px 40px rgba(27, 94, 32, 0.3); /* Sombra más intensa */
+    border-color: rgba(129, 199, 132, 0.5); /* Borde más visible */
+}
+
+/* ===========================================
+   ELEMENTO DECORATIVO: DIAGRAMA DE CORTES
+   ===========================================
+   Función: Elemento decorativo superpuesto
+   Nota: Requiere imagen 'meat-cuts-diagram.png'
+   Posición: A la derecha de la imagen principal
+   =========================================== */
+.product-image::after {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Centrado vertical */
+    right: -10%; /* Desplazado a la derecha */
+    transform: translateY(-50%); /* Ajuste de centrado */
+    width: 200px; /* Ancho del diagrama */
+    height: 200px; /* Altura del diagrama */
+    background: url('meat-cuts-diagram.png') center/contain no-repeat; /* Imagen de diagrama */
+    opacity: 0.8; /* Semitransparente */
+    z-index: 2; /* Capa superior */
+}
+
+/* ===========================================
+   ELEMENTO DECORATIVO: EMOJI DE CHILE
+   ===========================================
+   Función: Elemento decorativo temático
+   Nota: Representa picante/sabor
+   Posición: Inferior derecha de la imagen
+   =========================================== */
+.product-image::before {
+    content: '🌶️'; /* Emoji de chile */
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 10%; /* Distancia desde abajo */
+    right: -5%; /* Desplazado a la derecha */
+    font-size: 3rem; /* Tamaño grande */
+    z-index: 3; /* Capa superior */
+    transform: rotate(-15deg); /* Rotación sutil */
+}
+
+/* ===========================================
+   INFORMACIÓN DEL PRODUCTO
+   ===========================================
+   Función: Contenedor de texto y características
+   Propósito: Detallar el servicio ofrecido
+   Temática: Verde oscuro para contraste
+   Presentación: Fondo elegante con espaciado
+   =========================================== */
+.product-info {
+    padding: 2.5rem; /* Espaciado interno generoso */
+    background: linear-gradient(135deg, #ffffff 0%, #F1F8E9 100%); /* Degradado sutil verde claro */
+    border-radius: 20px; /* Bordes muy redondeados */
+    box-shadow: 0 10px 40px rgba(27, 94, 32, 0.1); /* Sombra verde suave */
+    border: 2px solid rgba(129, 199, 132, 0.2); /* Borde verde sutil */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover en información del producto */
+.product-info:hover {
+    box-shadow: 0 15px 50px rgba(27, 94, 32, 0.15); /* Sombra más intensa */
+    border-color: rgba(129, 199, 132, 0.4); /* Borde más visible */
+}
+
+.product-info h2 {
+    font-size: 2.8rem; /* Tamaño grande */
+    font-weight: 800; /* Peso extra bold */
+    color: #1B5E20; /* Verde muy oscuro */
+    margin-bottom: 2rem; /* Espaciado inferior */
+    text-transform: uppercase; /* Mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    line-height: 1.2; /* Espaciado entre líneas */
+    position: relative; /* Para pseudo-elementos */
+    padding-bottom: 1rem; /* Espacio para línea decorativa */
+}
+
+/* Línea decorativa bajo título */
+.product-info h2::after {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 0; /* Borde inferior */
+    left: 0; /* Borde izquierdo */
+    width: 80px; /* Ancho de la línea */
+    height: 4px; /* Grosor */
+    background: linear-gradient(90deg, #4CAF50, #81C784); /* Degradado verde */
+    border-radius: 2px; /* Bordes redondeados */
+}
+
+.product-info p {
+    font-size: 1.2rem; /* Tamaño legible */
+    color: #2E7D32; /* Verde oscuro medio */
+    margin-bottom: 2.5rem; /* Espaciado inferior */
+    line-height: 1.8; /* Espaciado entre líneas */
+}
+
+/* ===========================================
+   LISTA DE CARACTERÍSTICAS DEL PRODUCTO
+   ===========================================
+   Función: Lista de beneficios específicos
+   Layout: Columna vertical
+   Formato: Checkmarks + texto
+   Presentación: Espaciado elegante y visual
+   =========================================== */
+.product-features {
+    display: flex; /* Layout flexbox */
+    flex-direction: column; /* Dirección vertical */
+    gap: 1.5rem; /* Espaciado entre elementos aumentado */
+}
+
+/* ===========================================
+   ELEMENTO INDIVIDUAL DE CARACTERÍSTICA
+   ===========================================
+   Función: Fila individual con check y texto
+   Layout: Horizontal con espaciado
+   Temática: Verde oscuro para legibilidad
+   Presentación: Fondo elegante con hover
+   =========================================== */
+.product-feature {
+    display: flex; /* Layout flexbox */
+    align-items: center; /* Alineación vertical centrada */
+    gap: 1rem; /* Espaciado entre check y texto */
+    font-size: 1.1rem; /* Tamaño legible */
+    color: #1B5E20; /* Verde muy oscuro */
+    font-weight: 500; /* Peso medio */
+    padding: 1rem 1.5rem; /* Espaciado interno */
+    background: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+    border-radius: 12px; /* Bordes redondeados */
+    border: 1px solid rgba(129, 199, 132, 0.2); /* Borde verde sutil */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover en característica */
+.product-feature:hover {
+    background: rgba(255, 255, 255, 0.8); /* Fondo más opaco */
+    border-color: rgba(129, 199, 132, 0.5); /* Borde más visible */
+    transform: translateX(5px); /* Desplazamiento sutil */
+    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.1); /* Sombra verde suave */
+}
+
+/* ===========================================
+   CHECKMARK DE CARACTERÍSTICAS
+   ===========================================
+   Función: Indicador visual de validación
+   Color: Verde vibrante para consistencia
+   Temática: Aprobación, calidad
+   Presentación: Círculo con check
+   =========================================== */
+.check {
+    color: #4CAF50; /* Verde vibrante */
+    font-weight: bold; /* Peso bold */
+    font-size: 1.5rem; /* Tamaño destacado aumentado */
+    display: flex; /* Layout flexbox */
+    align-items: center; /* Alineación centrada */
+    justify-content: center; /* Centrado horizontal */
+    width: 35px; /* Ancho del círculo */
+    height: 35px; /* Altura del círculo */
+    background: rgba(76, 175, 80, 0.15); /* Fondo verde semitransparente */
+    border-radius: 50%; /* Forma circular */
+    border: 2px solid rgba(76, 175, 80, 0.3); /* Borde verde sutil */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover en checkmark */
+.product-feature:hover .check {
+    background: rgba(76, 175, 80, 0.25); /* Fondo más opaco */
+    border-color: #4CAF50; /* Borde más visible */
+    transform: scale(1.1); /* Escala sutil */
+}
+
+/* ===========================================
+   ANIMACIONES KEYFRAMES
+   ===========================================
+   Función: Definir animaciones personalizadas
+   Propósito: Movimientos y transiciones complejos
+   Uso: Se aplican con la propiedad 'animation'
+   =========================================== */
+
+/* ===========================================
+   ANIMACIÓN: FADE IN UP (Entrada desde abajo)
+   ===========================================
+   Función: Elemento aparece desplazándose hacia arriba
+   Uso: Títulos, subtítulos, descripciones del hero
+   Duración: 1s (configurable)
+   =========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(30px); /* Comienza 30px abajo */
+    }
+    to {
+        opacity: 1; /* Termina visible */
+        transform: translateY(0); /* Termina en posición original */
+    }
+}
+
+/* ===========================================
+   ANIMACIÓN: BOUNCE (Rebote)
+   ===========================================
+   Función: Elemento rebota suavemente
+   Uso: Texto CTA inferior del hero
+   Duración: 2s (infinito)
+   =========================================== */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0); /* Posición base */
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px); /* Rebote hacia arriba */
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px); /* Rebote menor */
+    }
+}
+
+/* ===========================================
+   DISEÑO RESPONSIVE (MEDIA QUERIES)
+   ===========================================
+   Función: Adaptar diseño a diferentes tamaños de pantalla
+   Metodología: Mobile-first (de menor a mayor)
+   Breakpoints: 768px (tablets), 480px (móviles)
+   =========================================== */
+
+/* ===========================================
+   TABLETS (max-width: 768px)
+   ===========================================
+   Función: Ajustes para pantallas medianas
+   Cambios principales: Menú vertical, grid de 1 columna
+   =========================================== */
+@media (max-width: 768px) {
+    /* Menú de navegación vertical */
+    .nav-menu {
+        flex-direction: column; /* Dirección vertical */
+        gap: 1rem; /* Espaciado reducido */
+        position: absolute; /* Posicionamiento absoluto */
+        top: 100%; /* Debajo de la navbar */
+        left: 0; /* Borde izquierdo */
+        right: 0; /* Borde derecho */
+        background: rgba(13, 59, 13, 0.98); /* Fondo verde muy oscuro */
+        padding: 1rem; /* Espaciado interno */
+        transform: translateY(-100%); /* Oculto hacia arriba */
+        transition: transform 0.3s ease; /* Transición suave */
+    }
+    
+    /* Menú activo (visible) */
+    .nav-menu.active {
+        transform: translateY(0); /* Visible */
+    }
+    
+    /* Título del hero reducido */
+    .hero-title {
+        font-size: 2.5rem; /* Tamaño mediano */
+    }
+    
+    /* Logo circular reducido */
+    .hero::before {
+        width: 80px; /* Ancho reducido */
+        height: 80px; /* Altura reducida */
+        font-size: 0.6rem; /* Fuente más pequeña */
+        top: 1rem; /* Posición ajustada */
+        right: 1rem; /* Posición ajustada */
+    }
+    
+    /* Showcase: una columna */
+    .showcase-container {
+        grid-template-columns: 1fr; /* Una columna */
+        gap: 2rem; /* Espaciado reducido */
+    }
+    
+    /* Título de producto reducido */
+    .product-info h2 {
+        font-size: 2rem; /* Tamaño mediano */
+    }
+    
+    /* Características: una columna */
+    .features-container {
+        grid-template-columns: 1fr; /* Una columna */
+        gap: 2rem; /* Espaciado reducido */
+    }
+    
+    /* Ocultar elementos decorativos en móvil */
+    .product-image::after,
+    .product-image::before {
+        display: none; /* Ocultar diagrama y emoji */
+    }
+}
+
+/* ===========================================
+   MÓVILES (max-width: 480px)
+   ===========================================
+   Función: Ajustes para pantallas pequeñas
+   Cambios principales: Textos más pequeños, padding reducido
+   =========================================== */
+@media (max-width: 480px) {
+    /* Título del hero muy reducido */
+    .hero-title {
+        font-size: 2rem; /* Tamaño pequeño */
+    }
+    
+    /* Subtítulo reducido */
+    .hero-subtitle {
+        font-size: 1.3rem; /* Tamaño pequeño */
+    }
+    
+    /* Contenedor de navegación con menos padding */
+    .nav-container {
+        padding: 0 1rem; /* Padding reducido */
+    }
+    
+    /* Contenedores con menos padding */
+    .features-container,
+    .showcase-container {
+        padding: 0 1rem; /* Padding reducido */
+    }
+    
+    /* Botón CTA más compacto */
+    .cta-button {
+        padding: 0.8rem 2rem; /* Padding reducido */
+        font-size: 1rem; /* Tamaño base */
+    }
+}
+
+/* ===========================================
+   FARM GREEN - Eco Farm Premium
+   ===========================================
+   Description: Modern agricultural/organic farm landing page
+   Author: FARM GREEN Team
+   Version: 1.0
+   =========================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ===========================================
+   NAVBAR
+   =========================================== */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: transparent;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.logo-at {
+    color: #ffffff;
+}
+
+.logo-ecofarm {
+    color: #d9c247;
+    margin-left: 5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-link:hover {
+    color: #d9c247;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* ===========================================
+   HERO SECTION
+   =========================================== */
+.hero {
+    height: 750px;
+    width: 100%;
+    background: linear-gradient(rgba(20, 40, 20, 0.65), rgba(20, 40, 20, 0.65)),
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-title {
+    color: #ffffff;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    background: #d9c247;
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.hero-button:hover {
+    background: #c9b03f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(217, 194, 71, 0.4);
+}
+
+.hero-badge {
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    transform: translateY(-50%);
+    background: #d9c247;
+    padding: 30px;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.badge-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.badge-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-subtitle {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.hero-promo {
+    position: absolute;
+    bottom: 80px;
+    right: 10%;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* ===========================================
+   FEATURES SECTION
+   =========================================== */
+.features {
+    background: #2f4f2f;
+    padding: 80px 60px;
+    position: relative;
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 40, 20, 0.3);
+}
+
+.features-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    gap: 60px;
+}
+
+.feature-item {
+    flex: 1;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.feature-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    color: #cccccc;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* ===========================================
+   PRODUCT SECTION
+   =========================================== */
+.product-section {
+    background: #f5f5f5;
+    padding: 100px 60px;
+    min-height: 600px;
+    position: relative;
+}
+
+.product-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    height: 500px;
+}
+
+.meat-diagram {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+}
+
+.cow-diagram {
+    width: 100%;
+    height: 100%;
+}
+
+.chile-decor {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    font-size: 80px;
+    transform: rotate(15deg);
+}
+
+.meat-package {
+    position: absolute;
+    bottom: 10%;
+    right: 15%;
+    width: 300px;
+    height: 200px;
+    transform: rotate(-10deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.package-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e8d5b7, #c9b896);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9b7b4f;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0 30px;
+    }
+    
+    .hero-content {
+        padding: 0 30px;
+    }
+    
+    .hero-title {
+        font-size: 56px;
+    }
+    
+    .hero-badge {
+        width: 150px;
+        height: 150px;
+        right: 5%;
+    }
+    
+    .features-container {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-title {
+        font-size: 42px;
+    }
+    
+    .hero-badge {
+        display: none;
+    }
+    
+    .hero-promo {
+        font-size: 18px;
+        right: 5%;
+        bottom: 50px;
+    }
+    
+    .features-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .product-container {
+        height: 400px;
+    }
+    
+    .meat-diagram {
+        width: 300px;
+        height: 225px;
+    }
+    
+    .chile-decor {
+        font-size: 50px;
+        top: 10%;
+        right: 10%;
+    }
+    
+    .meat-package {
+        width: 200px;
+        height: 150px;
+        bottom: 5%;
+        right: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .features {
+        padding: 60px 20px;
+    }
+    
+    .product-section {
+        padding: 60px 20px;
+    }
+}
