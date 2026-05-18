@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Plataforma profesional de venta y clasificación de ganado por raza, peso y edad. Ofrecemos ejemplares de alta genética Angus, Brangus, Hereford y más.">
+    <meta name="keywords" content="venta de ganado, clasificación de ganado, razas bovinas, toros, vacas, peso del ganado, genética bovina">
+    <title>CattleCo | Venta y Clasificación de Ganado por Raza y Peso</title>
+    <!-- Google Fonts + Font Awesome: Mejora tipográfica e iconografía profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===============================================
+           RESET Y VARIABLES GLOBALES
+           ===============================================
+           Propósito: Unificar estilos base y definir paleta de colores
+           inspirada en la ganadería (verde pradera, tonos cuero)
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefcf5;
+            color: #2c2b28;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Variables CSS para mantener consistencia cromática */
+        :root {
+            --primary: #2d6a4f;
+            --primary-dark: #1b4d3e;
+            --primary-light: #52b788;
+            --secondary: #b97f44;
+            --accent: #f4a261;
+            --dark-bg: #2f3e2e;
+            --light-bg: #f9f7f0;
+            --gray-soft: #e9e5d9;
+            --text-dark: #2c2b28;
+            --text-light: #fefcf5;
+            --shadow: 0 25px 45px -12px rgba(0,0,0,0.15);
+            --shadow-sm: 0 10px 20px -5px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* ===============================================
+           NAVBAR (BARRA DE NAVEGACIÓN FIJA)
+           ===============================================
+           Función: Mantener menú siempre visible al hacer scroll.
+           El logo ahora tiene un espacio预留 (placeholder) para que el usuario
+           pueda colocar su propia imagen (logo de la empresa).
+        */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 252, 240, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 2px 25px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(45, 106, 79, 0.15);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* LOGO: contenedor flexible que permite imagen personalizada + texto */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        /* Espacio para la imagen del logo (reemplazar por img propia) */
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            display: block;
+            background: #e9e5d9; /* fondo sutil mientras no haya imagen */
+            border-radius: 12px;
+            padding: 4px;
+            transition: transform 0.2s;
+        }
+        .logo:hover .logo-img {
+            transform: scale(1.02);
+        }
+        .logo-text {
+            font-size: 1.65rem;
+            font-weight: 800;
+            background: linear-gradient(130deg, var(--primary-dark), var(--primary-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c2b28;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* ===============================================
+           SECCIÓN HERO (PORTADA PRINCIPAL)
+           =============================================== */
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(105deg, rgba(30,45,30,0.75) 0%, rgba(20,35,20,0.6) 100%), 
+                        url('portada.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+            position: relative;
+        }
+        .hero-overlay { width: 100%; padding: 8rem 0 5rem; }
+        .hero-content { max-width: 720px; }
+        .hero-badge {
+            background: rgba(185, 127, 68, 0.9);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 4px 18px rgba(0,0,0,0.3);
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 span { color: var(--secondary); }
+        .hero p {
+            font-size: 1.2rem;
+            color: #fefcf5;
+            margin-bottom: 2rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 1rem 2.3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ===============================================
+           CLASIFICACIÓN DE GANADO (TABLA CON IMÁGENES GRANDES)
+           ===============================================
+           Mejora: imágenes más grandes (70x70) y visibles, con efecto hover.
+        */
+        .classification-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        .section-sub {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+            color: #5a5a57;
+        }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--gray-soft);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        .livestock-table {
+            background: white;
+            border-radius: 28px;
+            overflow-x: auto;
+            box-shadow: var(--shadow-sm);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th {
+            text-align: left;
+            padding: 1.2rem 1rem;
+            background: #f1efe7;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        td {
+            padding: 1rem 1rem;
+            border-bottom: 1px solid #edece4;
+            vertical-align: middle;
+        }
+        /* Celda de imagen más grande y destacada */
+        .img-cell {
+            width: 90px;
+            text-align: center;
+        }
+        .animal-thumb {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 16px;       /* esquinas ligeramente redondeadas, más moderno */
+            border: 3px solid var(--primary-light);
+            background: #e9e5d9;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .animal-thumb:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+        .badge-raza {
+            background: var(--gray-soft);
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .price-highlight {
+            color: var(--primary);
+            font-weight: 800;
+        }
+        .btn-sm {
+            background: transparent;
+            border: 1.5px solid var(--primary);
+            padding: 0.45rem 1.1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-sm:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===============================================
+           RAZAS DESTACADAS Y SERVICIOS
+           =============================================== */
+        .breeds-showcase {
+            padding: 4rem 0;
+            background: white;
+        }
+        .breeds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .breed-card {
+            background: var(--light-bg);
+            border-radius: 28px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .breed-card i { font-size: 2.8rem; color: var(--primary); margin-bottom: 1rem; }
+        .services {
+            background: #fff7ed;
+            padding: 4rem 0;
+        }
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .service-item {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            flex: 1;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-cta {
+            background: linear-gradient(115deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .btn-light {
+            background: white;
+            color: var(--primary-dark);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        footer {
+            background: #2c2b28;
+            color: #ccc;
+            padding: 3rem 0 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .img-cell { width: 70px; }
+            .animal-thumb { width: 60px; height: 60px; }
+            th, td { padding: 0.8rem 0.6rem; font-size: 0.85rem; }
+        }
+        @media (max-width: 700px) {
+            .container { padding: 0 1rem; }
+            .animal-thumb { width: 50px; height: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===============================================
+     BARRA DE NAVEGACIÓN CON ESPACIO PARA LOGO PERSONALIZADO
+     ===============================================
+     Instrucción: Para poner tu propio logo, reemplaza la imagen en la etiqueta <img class="logo-img">
+     con la ruta de tu archivo (ej: "img/mi-logo.png"). Por defecto mostramos un placeholder.
+     El tamaño recomendado es 48x48px o superior (se ajusta automáticamente).
+-->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#inicio" class="logo">
+            <!-- ESPACIO PARA LOGO: Cambia 'src' por la ruta de tu imagen -->
+            <img class="logo.png" src="logo.png" alt="Logo de la empresa ganadera" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=🐮+LOGO';">
+            <span class="logo-text">GANA<span style="color:var(--primary);">VENT</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#clasificacion">Clasificación</a></li>
+            <li><a href="#razas">Razas</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="hamburger" id="hamburgerBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<!-- SECCIÓN HERO: Venta de ganado con clasificación profesional -->
+<section class="hero" id="inicio">
+    <div class="hero-overlay container">
+        <div class="hero-content">
+            <div class="hero-badge">🐂 CLASIFICACIÓN POR RAZA · PESO · EDAD · FOTO GRANDE</div>
+            <h1>Venta estratégica de <span>ganado puro</span> con certificación genética</h1>
+            <p>Más de 1.200 cabezas disponibles. Filtramos por raza, rango de peso y visualizá la imagen destacada de cada ejemplar.</p>
+            <button class="btn-primary" id="scrollToTable">Ver tabla de ejemplares <i class="fas fa-arrow-down"></i></button>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN DE CLASIFICACIÓN (IMÁGENES MÁS VISIBLES) -->
+<section id="clasificacion" class="classification-section">
+    <div class="container">
+        <h2 class="section-title">📊 Clasificación de Ganado por Raza, Peso e Imagen</h2>
+        <p class="section-sub">Cada ejemplar muestra una fotografía representativa de mayor tamaño para mejor identificación.</p>
+        
+        <!-- Filtros dinámicos por raza -->
+        <div class="filters" id="filterGroup">
+            <button class="filter-btn active" data-filter="all">Todas las razas</button>
+            <button class="filter-btn" data-filter="Angus">Angus</button>
+            <button class="filter-btn" data-filter="Brangus">Brangus</button>
+            <button class="filter-btn" data-filter="Hereford">Hereford</button>
+            <button class="filter-btn" data-filter="Brahman">Brahman</button>
+        </div>
+
+        <div class="livestock-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Raza</th>
+                        <th>Categoría</th>
+                        <th>Peso (kg)</th>
+                        <th>Edad (meses)</th>
+                        <th>Precio x kg (USD)</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Se llena dinámicamente con JS, incluyendo imágenes grandes -->
+                </tbody>
+            </table>
+        </div>
+        <p style="margin-top: 1rem; font-size:0.85rem; text-align:center;">*Precios referenciales. Las imágenes son ilustrativas del estándar de cada lote. Pasa el mouse sobre la foto para ampliarla.</p>
+    </div>
+</section>
+
+<!-- RAZAS DESTACADAS (información) -->
+<section id="razas" class="breeds-showcase">
+    <div class="container">
+        <h2 class="section-title">🐄 Principales razas en nuestro rodeo</h2>
+        <p class="section-sub">Genética certificada, adaptación al clima y rendimiento superior.</p>
+        <div class="breeds-grid">
+            <div class="breed-card"><i class="fas fa-paw"></i><h4>Angus</h4><p>Excelente marmoleado, fertilidad. Pesos promedios: 500-650 kg.</p></div>
+            <div class="breed-card"><i class="fas fa-tree"></i><h4>Brangus</h4><p>Resistencia al calor, rusticidad. Pesos: 550-700 kg.</p></div>
+            <div class="breed-card"><i class="fas fa-mountain"></i><h4>Hereford</h4><p>Precocidad, muy buen rendimiento a la rastra.</p></div>
+            <div class="breed-card"><i class="fas fa-sun"></i><h4>Brahman</h4><p>Longevidad, excelente para cruzamiento industrial.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICIOS DE CLASIFICACIÓN -->
+<section id="servicios" class="services">
+    <div class="container">
+        <h2 class="section-title">🔍 Servicios de clasificación y asesoría</h2>
+        <div class="services-grid">
+            <div class="service-item"><i class="fas fa-chart-line" style="font-size:2rem; color:var(--primary);"></i><h3>Clasificación por peso</h3><p>Balanzas electrónicas, lotes homogéneos (±30kg).</p></div>
+            <div class="service-item"><i class="fas fa-dna"></i><h3>Análisis de filiación</h3><p>Certificado de pureza racial y trazabilidad individual.</p></div>
+            <div class="service-item"><i class="fas fa-file-invoice-dollar"></i><h3>Venta por lote</h3><p>Terneros, vaquillonas y toros reproductores.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO / COTIZACIÓN MAYORISTA -->
+<section id="contacto" class="contact-cta">
+    <div class="container">
+        <h3>📞 ¿Necesitas un lote específico por raza y peso?</h3>
+        <p>Asesoramos a productores, feedlots y criadores. Envío de planilla con stock actualizado + fotos de ejemplares.</p>
+        <button class="btn-light" id="contactBtn">Solicitar cotización <i class="fas fa-arrow-right"></i></button>
+    </div>
+</section>
+
+<footer>
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:2rem;">
+        <div><h4><i class="fas fa-horse-head"></i> CattleCo</h4><p>Venta y clasificación genética desde 1998.</p></div>
+        <div><h4>Contacto comercial</h4><p><i class="fas fa-map-marker-alt"></i> Ruta 34 km 125, Rafaela, Argentina</p><p><i class="fas fa-envelope"></i> ventas@cattleco.com</p><p><i class="fas fa-phone"></i> +54 9 3492 567890</p></div>
+    </div>
+    <div style="text-align:center; margin-top:2rem;">© 2025 CattleCo - Ganadería de precisión</div>
+</footer>
+
+<script>
+    // ==========================================================
+    // BASE DE DATOS DE EJEMPLARES (IMÁGENES REALES DE GANADO)
+    // ==========================================================
+    // Cada animal tiene una imagen de mayor calidad y tamaño visual.
+    const ganadoData = [
+        { raza: "Angus", categoria: "Toro Joven", peso: 560, edad: 24, precioKg: 3.85, imagen: "nelore.png" },
+        { raza: "Angus", categoria: "Vaquillona", peso: 380, edad: 18, precioKg: 3.60, imagen: "nelore.png" },
+        { raza: "Angus", categoria: "Novillo", peso: 490, edad: 22, precioKg: 3.75, imagen: "nelore.png" },
+        { raza: "Brangus", categoria: "Toro", peso: 710, edad: 36, precioKg: 3.50, imagen: "nelore.png" },
+        { raza: "Brangus", categoria: "Vaquillona", peso: 410, edad: 20, precioKg: 3.40, imagen: "https://images.unsplash.com/photo-1608577077446-ca92b35888c5?w=200&auto=format" },
+        { raza: "Brangus", categoria: "Novillo", peso: 535, edad: 24, precioKg: 3.55, imagen: "https://images.unsplash.com/photo-1595960364541-f6ee2e27ec3c?w=200&auto=format" },
+        { raza: "Hereford", categoria: "Toro", peso: 650, edad: 30, precioKg: 3.65, imagen: "https://images.unsplash.com/photo-1595433707802-5c0b489e1df4?w=200&auto=format" },
+        { raza: "Hereford", categoria: "Vaquillona", peso: 395, edad: 19, precioKg: 3.50, imagen: "https://images.unsplash.com/photo-1544887880-0831edae1602?w=200&auto=format" },
+        { raza: "Hereford", categoria: "Novillo", peso: 470, edad: 21, precioKg: 3.60, imagen: "https://images.unsplash.com/photo-1556862674-5ddb3d3a4c2c?w=200&auto=format" },
+        { raza: "Brahman", categoria: "Toro", peso: 780, edad: 40, precioKg: 3.20, imagen: "https://images.unsplash.com/photo-1602174198173-390f9b7b4f8a?w=200&auto=format" },
+        { raza: "Brahman", categoria: "Vaquillona", peso: 430, edad: 22, precioKg: 3.10, imagen: "https://images.unsplash.com/photo-1596920435234-6082e7b4c64d?w=200&auto=format" },
+        { raza: "Brahman", categoria: "Novillo", peso: 560, edad: 28, precioKg: 3.25, imagen: "https://images.unsplash.com/photo-1586317760270-8f615d9b8eae?w=200&auto=format" },
+        { raza: "Angus", categoria: "Ternero", peso: 210, edad: 8, precioKg: 4.10, imagen: "https://images.unsplash.com/photo-1486464265777-6cd2be68579a?w=200&auto=format" },
+        { raza: "Brangus", categoria: "Ternero", peso: 225, edad: 9, precioKg: 3.95, imagen: "https://images.unsplash.com/photo-1541344256651-3b10a4b41b31?w=200&auto=format" }
+    ];
+
+    // ==========================================================
+    // FUNCIÓN RENDERIZAR TABLA CON IMÁGENES GRANDES (75x75)
+    // ==========================================================
+    function renderTable(filterRaza) {
+        const tbody = document.getElementById('tableBody');
+        if (!tbody) return;
+        
+        let filtered = [...ganadoData];
+        if (filterRaza !== 'all') {
+            filtered = filtered.filter(item => item.raza === filterRaza);
+        }
+        
+        if (filtered.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No hay ejemplares con esa raza en este momento. Consulte pronto.</td></tr>';
+            return;
+        }
+        
+        let html = '';
+        filtered.forEach(item => {
+            html += `
+                <tr>
+                    <td class="img-cell">
+                        <img src="${item.imagen}" alt="${item.raza} - ${item.categoria}" class="animal-thumb" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/200x200?text=🐄+Ganado';">
+                    </td>
+                    <td><span class="badge-raza">${item.raza}</span></td>
+                    <td>${item.categoria}</td>
+                    <td><strong>${item.peso} kg</strong></td>
+                    <td>${item.edad} meses</td>
+                    <td class="price-highlight">$${item.precioKg} /kg</td>
+                    <td><button class="btn-sm consultBtn" data-raza="${item.raza}" data-peso="${item.peso}" data-precio="${item.precioKg}" data-imagen="${item.imagen}">Consultar</button></td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = html;
+        
+        // Asignar evento a cada botón "Consultar"
+        document.querySelectorAll('.consultBtn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const raza = btn.getAttribute('data-raza');
+                const peso = btn.getAttribute('data-peso');
+                alert(`✅ Solicitud de información enviada.\nRaza: ${raza} | Peso aprox: ${peso}kg.\nUn asesor se comunicará en breve con ficha técnica y foto del lote.`);
+            });
+        });
+    }
+
+    // ==========================================================
+    // FILTROS DE RAZA (BOTONES)
+    // ==========================================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    let currentFilter = 'all';
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.getAttribute('data-filter');
+            renderTable(currentFilter);
+        });
+    });
+
+    // ==========================================================
+    // BOTÓN SCROLL A TABLA
+    // ==========================================================
+    const scrollBtn = document.getElementById('scrollToTable');
+    if(scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+            const section = document.getElementById('clasificacion');
+            if(section) section.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // ==========================================================
+    // BOTÓN CONTACTO
+    // ==========================================================
+    const contactBtn = document.getElementById('contactBtn');
+    if(contactBtn) {
+        contactBtn.addEventListener('click', () => {
+            alert("📩 Hemos recibido tu solicitud. En breve el departamento comercial te enviará el catálogo completo con lotes por peso, raza e imágenes reales disponibles.");
+        });
+    }
+
+    // ==========================================================
+    // MENÚ HAMBURGUESA RESPONSIVE
+    // ==========================================================
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.querySelector('.nav-links');
+    if(hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(255,252,240,0.98)';
+                navLinks.style.backdropFilter = 'blur(12px)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1.5rem';
+                navLinks.style.zIndex = '999';
+                navLinks.style.alignItems = 'center';
+            }
+        });
+        window.addEventListener('resize', () => {
+            if(window.innerWidth > 900) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'relative';
+                navLinks.style.background = 'transparent';
+                navLinks.style.padding = '0';
+                navLinks.style.top = 'auto';
+            } else {
+                if(navLinks.style.display !== 'flex') navLinks.style.display = 'none';
+            }
+        });
+    }
+
+    // ==========================================================
+    // SCROLL SUAVE PARA ENLACES INTERNOS
+    // ==========================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === "#" || targetId === "") return;
+            const targetEl = document.querySelector(targetId);
+            if(targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Render inicial
+    renderTable('all');
+</script>
+</body>
+</html>
